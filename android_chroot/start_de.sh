@@ -1,7 +1,10 @@
 #!/bin/sh
+echo ">>> Starting KDE Plasma Desktop Environment"
+
 mnt="/data/local/tmp/chrootarch"
 
 if ! mountpoint -q $mnt/dev; then
+  echo "[WARNING] Mount points not found"
   sh $mnt/../mount.sh
 fi
 

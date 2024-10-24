@@ -9,8 +9,8 @@ sudo rm ../../chroot.sh
 sudo rm ../../de.sh
 sudo rm ../../kill.sh
 
-mv /data/local/tmp/de.sh ../../
-mv /data/local/tmp/chroot.sh ../../
-mv /data/local/tmp/kill.sh ../../
+mv de.sh ../../
+mv chroot.sh ../../
+mv kill.sh ../../
 
 sudo cp *.sh /data/local/tmp

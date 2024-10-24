@@ -18,7 +18,7 @@ if mountpoint -q $mnt/sys; then
 fi
 
 # Unmount /dev/pts
-if mountpoint -q $mnt/dev/pts; then
+if [ -d $mnt/dev/pts ] && mountpoint -q $mnt/dev/pts; then
   umount $mnt/dev/pts
 fi
 

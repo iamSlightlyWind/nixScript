@@ -8,4 +8,5 @@ if ! mountpoint -q $mnt/dev; then
   sh $mnt/../mount.sh
 fi
 
+echo "[Debug] $DISPLAY: $DISPLAY"
 busybox chroot $mnt su - slightlywind -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713 && dbus-launch --exit-with-session startplasma-x11"

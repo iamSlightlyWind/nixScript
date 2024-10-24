@@ -4,7 +4,8 @@ echo ">>> Mounting chroot directories"
 mnt="/data/local/tmp/chrootarch"
 busybox mount -o remount,dev,suid /data
 
-mkdir -p $mnt/dev/shm
+rm -rf $mnt/dev/shm
+mkdir $mnt/dev/shm
 
 if ! mountpoint -q $mnt/dev; then
   echo "[I] Mounting 1/7: /dev"

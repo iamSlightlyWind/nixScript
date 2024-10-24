@@ -5,7 +5,6 @@ killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android termux-wake-
 
 echo ">>> Starting X11 Server"
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
-
 XDG_RUNTIME_DIR=${TMPDIR} termux-x11 :0 -ac &
 
 sleep 3

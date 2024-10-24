@@ -4,5 +4,7 @@ su -c "rm /data/local/tmp/start_de.sh"
 su -c "rm /data/local/tmp/umount.sh"
 sudo rm ../../start.sh
 
+sudo chmod 777 start.sh
+
 sudo cp *.sh /data/local/tmp
 sudo mv /data/local/tmp/start.sh ../../

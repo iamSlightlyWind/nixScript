@@ -1,16 +1,12 @@
 sudo chmod 777 *.sh
 
-su -c "rm /data/local/tmp/chroot.sh"
-su -c "rm /data/local/tmp/mount.sh"
-su -c "rm /data/local/tmp/start_de.sh"
-su -c "rm /data/local/tmp/umount.sh"
+su -c "rm /data/local/tmp/*.sh"
 
-sudo rm ../../chroot.sh
-sudo rm ../../de.sh
-sudo rm ../../kill.sh
+sudo cp -fp mount.sh /data/local/tmp
+sudo cp -fp umount.sh /data/local/tmp
+sudo cp -fp start_chroot.sh /data/local/tmp
+sudo cp -fp start_de.sh /data/local/tmp
 
-mv de.sh ../../
-mv chroot.sh ../../
-mv kill.sh ../../
-
-sudo cp *.sh /data/local/tmp
+sudo cp -fp chroot.sh /data/data/com.termux/files/home
+sudo cp -fp de.sh /data/data/com.termux/files/home
+sudo cp -fp kill.sh /data/data/com.termux/files/home

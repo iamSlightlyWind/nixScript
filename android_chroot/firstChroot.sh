@@ -13,8 +13,16 @@ usermod -G 3003 -a root
 rm /etc/pacman.d/mirrorlist
 mv mirrorlist /etc/pacman.d/mirrorlist
 
-pacman -Syu --noconfirm
-pacman -S net-tools sudo nano curl mesa mesautils firefox konsole wget git base-devel i3 fish neofetch --noconfirm
+pkg_list="net-tools sudo nano curl mesa mesa-utils firefox konsole wget git base-devel i3 fish neofetch"
+
+while ! pacman -Syu --noconfirm; do
+    sleep 1
+done
+
+while ! pacman -S $pkg_list --noconfirm; do
+    sleep 1
+done
+
 
 groupadd storage
 groupadd wheel

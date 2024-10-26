@@ -1,6 +1,7 @@
 #!/bin/bash
 
-REPO_DIR="./nixscript/android_chroot"
+REPO_DIR="/data/data/com.termux/files/home/nixscript/android_chroot"
+TERMUXHOME="/data/data/com.termux/files/home"
 CHECK_INTERVAL=5
 
 while true; do
@@ -15,12 +16,11 @@ while true; do
         git reset --hard
         git pull
         sh copy.sh
-        cd
+        cd $TERMUXHOME
         sudo sh install.sh
         exit 0
     else
         clear
         echo "No updates found."
-        cd
     fi
 done

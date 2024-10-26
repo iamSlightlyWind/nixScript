@@ -31,6 +31,11 @@ mkdir -p $CHROOTDIR/media/sdcard
 mkdir -p $CHROOTDIR/dev/shm
 mkdir -p $CHROOTDIR/etc
 
+echo -e "\nChecking for resolv.conf and hosts files..."
+file "$CHROOTDIR/etc/resolv.conf"
+file "$CHROOTDIR/etc/hosts"
+echo -e "\n"
+
 touch "$CHROOTDIR/etc/resolv.conf"
 touch "$CHROOTDIR/etc/hosts"
 

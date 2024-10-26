@@ -19,8 +19,8 @@ while true; do
         cd
         sudo sh install.sh
     else
-        echo "No updates found."
         clear
+        echo "No updates found."
     fi
 
     cd

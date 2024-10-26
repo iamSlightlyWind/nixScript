@@ -2,8 +2,9 @@
 
 TERMUXHOME="/data/data/com.termux/files/home"
 FILE="ArchLinuxARM-aarch64-latest.tar.gz"
-CHROOTDIR="/data/local/tmp/chrootarch"
-CHROOTSOURCE="/data/local/tmp/chrootarch.source"
+CHROOTDIR="chrootarch"
+CHROOTSOURCE="chrootarch.source"
+TEMP="/data/local/tmp"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Please run as root"
@@ -23,21 +24,18 @@ else
 fi
 
 if [ -d "$CHROOTDIR" ]; then
+    cd $TEMP
     mv $CHROOTDIR $CHROOTDIR.bak
     rm -rf $CHROOTDIR.bak &
     mkdir -p $CHROOTDIR
     tar -cf - $CHROOTSOURCE | tar -xf - -C $CHROOTDIR
-    echo $CHROOTDIR
-    ls -la $CHROOTDIR
-    echo $CHROOTDIR/chrootarch.source
     ls -la $CHROOTDIR/chrootarch.source
+    ls -la $CHROOTDIR
     mv $CHROOTDIR/chrootarch.source/* $CHROOTDIR
     rm -rf $CHROOTDIR/chrootarch.source
 fi
 
-echo "checking chroot dir"
-ls -la $CHROOTDIR
-sleep 3
+cd $TEMP
 
 mkdir -p $CHROOTDIR/dev
 mkdir -p $CHROOTDIR/media/sdcard

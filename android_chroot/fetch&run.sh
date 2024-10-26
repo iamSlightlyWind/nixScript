@@ -18,10 +18,9 @@ while true; do
         sh copy.sh
         cd
         sudo sh install.sh
+        exit 0
     else
         clear
         echo "No updates found."
     fi
-
-    exit 0
 done

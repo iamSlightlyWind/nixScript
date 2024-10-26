@@ -31,8 +31,8 @@ mkdir -p $CHROOTDIR/media/sdcard
 mkdir -p $CHROOTDIR/dev/shm
 mkdir -p $CHROOTDIR/etc
 
-touch $CHROOTDIR/etc/resolv.conf
-touch $CHROOTDIR/etc/hosts
+touch "$CHROOTDIR/etc/resolv.conf"
+touch "$CHROOTDIR/etc/hosts"
 
 echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/etc/resolv.conf
 echo "127.0.0.1 localhost" > $CHROOTDIR/etc/hosts

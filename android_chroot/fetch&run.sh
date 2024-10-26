@@ -20,6 +20,7 @@ while true; do
         sudo sh install.sh
     else
         echo "No updates found."
+        clear
     fi
 
     cd

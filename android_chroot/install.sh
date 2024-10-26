@@ -2,32 +2,56 @@
 
 TERMUXHOME="/data/data/com.termux/files/home"
 FILE="ArchLinuxARM-aarch64-latest.tar.gz"
-CHROOTDIR="/data/local/tmp/chrootarch"
+CHROOTDIR="chrootarch"
+CHROOTSOURCE="chrootarch.source"
+TEMP="/data/local/tmp"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Please run as root"
     exit 1
 fi
 
-if [ ! -f "$FILE" ]; then
-    wget http://os.archlinuxarm.org/os/$FILE
+cd $TEMP
+
+if [ ! -d "$CHROOTSOURCE" ]; then
+    if [ ! -f "$FILE" ]; then
+        wget http://os.archlinuxarm.org/os/$FILE
+    else
+        echo "$FILE already exists."
+    fi
+    mkdir -p "$CHROOTSOURCE"
+    tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner -C "$CHROOTSOURCE"
 else
-    echo "$FILE already exists."
+    echo "$CHROOTSOURCE already exists."
 fi
 
 if [ -d "$CHROOTDIR" ]; then
-    rm -rf "$CHROOTDIR"
+    cd $TEMP
+    mv $CHROOTDIR $CHROOTDIR.bak
+    rm -rf $CHROOTDIR.bak &
+    mkdir -p $CHROOTDIR
+    tar -cf - $CHROOTSOURCE | tar -xf - -C $CHROOTDIR
+    mv $CHROOTDIR/$CHROOTSOURCE/* $CHROOTDIR
+    rm -rf $CHROOTDIR/$CHROOTSOURCE
 fi
 
-mkdir -p "$CHROOTDIR"
-cd "$CHROOTDIR"
+cd $TEMP
 
-tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner
+mkdir -p $CHROOTDIR/dev
+mkdir -p $CHROOTDIR/media/sdcard
+mkdir -p $CHROOTDIR/dev/shm
+mkdir -p $CHROOTDIR/etc
 
-mkdir media
-mkdir media/sdcard
-mkdir dev/shm
-mkdir -p etc
+echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/resolv.conf
+echo "127.0.0.1 localhost" > $CHROOTDIR/hosts
 
-echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/etc/resolv.conf
-echo "127.0.0.1 localhost" > $CHROOTDIR/etc/hosts
+mv $CHROOTDIR/resolv.conf $CHROOTDIR/etc/resolv.conf
+mv $CHROOTDIR/hosts $CHROOTDIR/etc/hosts
+
+sed -i 's/^CheckSpace/#CheckSpace/' $CHROOTDIR/etc/pacman.conf
+sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 16/' $CHROOTDIR/etc/pacman.conf
+mv $TERMUXHOME/mirrorlist $CHROOTDIR/root
+mv $TERMUXHOME/firstChroot.sh $CHROOTDIR/root
+mv $TERMUXHOME/*.tar.gz $CHROOTDIR/root
+
+sh $TERMUXHOME/chroot.sh 

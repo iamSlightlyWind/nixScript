@@ -3,6 +3,7 @@
 TERMUXHOME="/data/data/com.termux/files/home"
 FILE="ArchLinuxARM-aarch64-latest.tar.gz"
 CHROOTDIR="/data/local/tmp/chrootarch"
+CHROOTSOURCE="/data/local/tmp/chrootarch.source"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Please run as root"
@@ -15,9 +16,20 @@ else
     echo "$FILE already exists."
 fi
 
+if [ ! -d "$CHROOTSOURCE" ]; then
+    mkdir -p "$CHROOTSOURCE"
+    tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner -C "$CHROOTSOURCE"
+else
+    echo "$CHROOTSOURCE already exists."
+fi
+
 if [ -d "$CHROOTDIR" ]; then
     mv $CHROOTDIR $CHROOTDIR.bak
     rm -rf $CHROOTDIR.bak &
+    mkdir -p "$CHROOTDIR"
+    tar -cf - $CHROOTSOURCE | tar -xf - -C "$CHROOTDIR"
+    mv $CHROOTDIR/* $CHROOTDIR
+    rm -rf $CHROOTDIR/chrootarch
 fi
 
 mkdir -p "$CHROOTDIR"

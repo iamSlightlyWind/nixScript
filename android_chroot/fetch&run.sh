@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_DIR="./nixscript"
+REPO_DIR="./nixscript/android_chroot"
 CHECK_INTERVAL=5
 
 while true; do
@@ -12,7 +12,6 @@ while true; do
 
     if [ $LOCAL != $REMOTE ]; then
         echo "Updates found. Pulling changes..."
-        cd nixScript/android_chroot
         git reset --hard
         git pull
         sh copy.sh

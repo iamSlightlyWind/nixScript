@@ -8,4 +8,4 @@ if ! mountpoint -q $mnt/dev; then
   sh $mnt/../mount.sh
 fi
 
-busybox chroot $mnt su - root
+busybox chroot $mnt su - slightlywind

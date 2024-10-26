@@ -27,13 +27,17 @@ if [ -d "$CHROOTDIR" ]; then
     rm -rf $CHROOTDIR.bak &
     mkdir -p $CHROOTDIR
     tar -cf - $CHROOTSOURCE | tar -xf - -C $CHROOTDIR
+    echo $CHROOTDIR
+    ls -la $CHROOTDIR
+    echo $CHROOTDIR/chrootarch.source
+    ls -la $CHROOTDIR/chrootarch.source
     mv $CHROOTDIR/chrootarch.source/* $CHROOTDIR
     rm -rf $CHROOTDIR/chrootarch.source
 fi
 
 echo "checking chroot dir"
 ls -la $CHROOTDIR
-echo -e "\n\n\n"
+sleep 3
 
 mkdir -p $CHROOTDIR/dev
 mkdir -p $CHROOTDIR/media/sdcard

@@ -12,7 +12,7 @@ fi
 cd $TEMP
 
 rm -rf $CHROOTDIR
-mkir -p $CHROOTDIR
+mkdir -p $CHROOTDIR
 tar -cf - $BACKUPDIR | tar -xf - -C $CHROOTDIR
 mv $CHROOTDIR/$BACKUPDIR/* $CHROOTDIR
 rm -rf $CHROOTDIR/$BACKUPDIR

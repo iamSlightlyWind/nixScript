@@ -12,3 +12,4 @@ sudo cp -fp de.sh /data/data/com.termux/files/home
 sudo cp -fp kill.sh /data/data/com.termux/files/home
 sudo cp -fp both.sh /data/data/com.termux/files/home
 sudo cp -fp install.sh /data/data/com.termux/files/home
+sudo cp -fp "fetch&run.sh" /data/data/com.termux/files/home

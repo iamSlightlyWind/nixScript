@@ -28,10 +28,13 @@ echo "Current directory: $(pwd)"
 
 tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner
 
-mkdir $CHROOTDIR/dev
-mkdir $CHROOTDIR/media/sdcard
-mkdir $CHROOTDIR/dev/shm
+mkdir -p $CHROOTDIR/dev
+mkdir -p $CHROOTDIR/media/sdcard
+mkdir -p $CHROOTDIR/dev/shm
 mkdir -p $CHROOTDIR/etc
+
+touch $CHROOTDIR/etc/resolv.conf
+touch $CHROOTDIR/etc/hosts
 
 echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/etc/resolv.conf
 echo "127.0.0.1 localhost" > $CHROOTDIR/etc/hosts

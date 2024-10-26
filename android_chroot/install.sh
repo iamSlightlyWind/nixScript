@@ -31,12 +31,6 @@ if [ -d "$CHROOTDIR" ]; then
     rm -rf $CHROOTDIR/chrootarch
 fi
 
-mkdir -p "$CHROOTDIR"
-cd "$CHROOTDIR"
-echo "Current directory: $(pwd)"
-
-tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner
-
 mkdir -p $CHROOTDIR/dev
 mkdir -p $CHROOTDIR/media/sdcard
 mkdir -p $CHROOTDIR/dev/shm

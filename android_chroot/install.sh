@@ -11,6 +11,8 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+cd $TEMP
+
 if [ ! -d "$CHROOTSOURCE" ]; then
     if [ ! -f "$FILE" ]; then
         wget http://os.archlinuxarm.org/os/$FILE

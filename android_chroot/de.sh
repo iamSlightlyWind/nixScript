@@ -1,4 +1,6 @@
 #!/bin/bash
+MESA_NO_ERROR=1 MESA_GL_VERSION_OVERRIDE=4.3COMPAT MESA_GLES_VERSION_OVERRIDE=3.2 MESA_LOADER_DRIVER_OVERRIDE=zink GALLIUM_DRIVER=zink ZINK_DESCRIPTORS=lazy virgl_test_server --use-egl-surfaceless --use-gles &
+virgl_test_server_android &
 sh ./kill.sh
 
 echo ">>> Starting X11 Server"

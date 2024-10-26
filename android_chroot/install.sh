@@ -31,6 +31,10 @@ if [ -d "$CHROOTDIR" ]; then
     rm -rf $CHROOTDIR/chrootarch
 fi
 
+echo "checking chroot dir"
+ls -la $CHROOTDIR
+echo -e "\n\n\n"
+
 mkdir -p $CHROOTDIR/dev
 mkdir -p $CHROOTDIR/media/sdcard
 mkdir -p $CHROOTDIR/dev/shm

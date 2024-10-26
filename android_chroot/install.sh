@@ -2,6 +2,11 @@ TERMUXHOME="/data/data/com.termux/files/home"
 FILE="ArchLinuxARM-aarch64-latest.tar.gz"
 CHROOTDIR="/data/local/tmp/chrootarch"
 
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+
 if [ ! -f "$FILE" ]; then
     wget http://os.archlinuxarm.org/os/$FILE
 else
@@ -20,6 +25,7 @@ tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner
 mkdir media
 mkdir media/sdcard
 mkdir dev/shm
+mkdir etc
 
 echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > etc/resolv.conf
 echo "127.0.0.1 localhost" > etc/hosts

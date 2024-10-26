@@ -23,6 +23,5 @@ while true; do
         echo "No updates found."
     fi
 
-    cd
-    sleep $CHECK_INTERVAL
+    exit 0
 done

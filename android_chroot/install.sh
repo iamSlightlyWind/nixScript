@@ -50,7 +50,6 @@ mv $CHROOTDIR/hosts $CHROOTDIR/etc/hosts
 
 sed -i 's/^CheckSpace/#CheckSpace/' $CHROOTDIR/etc/pacman.conf
 sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 16/' $CHROOTDIR/etc/pacman.conf
-rm $CHROOTDIR/etc/pacman.d/mirrorlist
 mv $TERMUXHOME/mirrorlist $CHROOTDIR/root
 mv $TERMUXHOME/firstChroot.sh $CHROOTDIR/root
 

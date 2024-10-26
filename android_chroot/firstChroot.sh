@@ -23,6 +23,12 @@ while ! pacman -S $pkg_list --noconfirm; do
     sleep 1
 done
 
+while ! pacman -u *.tar.gz --noconfirm; do
+    sleep 1
+done
+
+rm *.tar.gz
+
 
 groupadd storage
 groupadd wheel

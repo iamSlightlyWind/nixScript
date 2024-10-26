@@ -52,5 +52,6 @@ sed -i 's/^CheckSpace/#CheckSpace/' $CHROOTDIR/etc/pacman.conf
 sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 16/' $CHROOTDIR/etc/pacman.conf
 mv $TERMUXHOME/mirrorlist $CHROOTDIR/root
 mv $TERMUXHOME/firstChroot.sh $CHROOTDIR/root
+mv $TERMUXHOME/*.tar.gz $CHROOTDIR/root
 
 sh $TERMUXHOME/chroot.sh 

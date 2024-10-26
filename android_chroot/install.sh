@@ -53,6 +53,6 @@ sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 16/' $CHROOTDIR/etc/pacman
 rm $CHROOTDIR/etc/pacman.d/mirrorlist
 mv $TERMUXHOME/mirrorlist $CHROOTDIR/etc/pacman.d/mirrorlist
 
-mv $TERMUXHOME/firstChroot.sh $CHROOTDIR
+mv $TERMUXHOME/firstChroot.sh $CHROOTDIR/root
 
 sh $TERMUXHOME/chroot.sh 

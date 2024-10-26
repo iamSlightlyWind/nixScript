@@ -22,5 +22,6 @@ while true; do
     else
         clear
         echo "No updates found."
+        cd
     fi
 done

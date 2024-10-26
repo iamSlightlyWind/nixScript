@@ -16,9 +16,10 @@ else
 fi
 
 if [ -d "$CHROOTDIR" ]; then
-    echo "Removing old $CHROOTDIR"
-    exit 1
-    rm -rf "$CHROOTDIR"
+    mv $CHROOTDIR $CHROOTDIR.bak
+    rm -rf $CHROOTDIR.bak &
+    ls $CHROOTDIR
+    sleep 5
 fi
 
 mkdir -p "$CHROOTDIR"

@@ -37,5 +37,4 @@ touch "$CHROOTDIR/etc/hosts"
 echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/etc/resolv.conf
 echo "127.0.0.1 localhost" > $CHROOTDIR/etc/hosts
 
-cd $TERMUXHOME
-sh chroot.sh
+sh $TERMUXHOME/chroot.sh

@@ -31,15 +31,10 @@ mkdir -p $CHROOTDIR/media/sdcard
 mkdir -p $CHROOTDIR/dev/shm
 mkdir -p $CHROOTDIR/etc
 
-echo -e "\nChecking for resolv.conf and hosts files..."
-file "$CHROOTDIR/etc/resolv.conf"
-file "$CHROOTDIR/etc/hosts"
-echo -e "\n"
+echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/resolv.conf
+echo "127.0.0.1 localhost" > $CHROOTDIR/hosts
 
-touch "$CHROOTDIR/etc/resolv.conf"
-touch "$CHROOTDIR/etc/hosts"
-
-echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/etc/resolv.conf
-echo "127.0.0.1 localhost" > $CHROOTDIR/etc/hosts
+mv $CHROOTDIR/resolv.conf $CHROOTDIR/etc/resolv.conf
+mv $CHROOTDIR/hosts $CHROOTDIR/etc/hosts
 
 sh $TERMUXHOME/chroot.sh 

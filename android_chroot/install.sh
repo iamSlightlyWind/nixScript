@@ -16,6 +16,7 @@ else
 fi
 
 if [ -d "$CHROOTDIR" ]; then
+    echo "Removing old $CHROOTDIR"
     rm -rf "$CHROOTDIR"
 fi
 

@@ -11,12 +11,15 @@ while true; do
     REMOTE=$(git rev-parse @{u})
 
     if [ $LOCAL != $REMOTE ]; then
+        echo "Updates found. Pulling changes..."
         cd nixScript/android_chroot
         git reset --hard
         git pull
         sh copy.sh
         cd
         sudo sh install.sh
+    else
+        echo "No updates found."
     fi
 
     cd - > /dev/null

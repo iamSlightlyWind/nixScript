@@ -4,6 +4,7 @@ TERMUXHOME="/data/data/com.termux/files/home"
 FILE="ArchLinuxARM-aarch64-latest.tar.gz"
 CHROOTDIR="/data/local/tmp/chrootarch"
 CHROOTSOURCE="/data/local/tmp/chrootarch.source"
+CHROOTFOLDER="chrootarch"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Please run as root"
@@ -27,8 +28,8 @@ if [ -d "$CHROOTDIR" ]; then
     rm -rf $CHROOTDIR.bak &
     mkdir -p "$CHROOTDIR"
     tar -cf - $CHROOTSOURCE | tar -xf - -C "$CHROOTDIR"
-    mv $CHROOTDIR/* $CHROOTDIR
-    rm -rf $CHROOTDIR/chrootarch
+    mv $CHROOTDIR/$CHROOTFOLDER/* $CHROOTDIR
+    rm -rf $CHROOTDIR/$CHROOTFOLDER
 fi
 
 echo "checking chroot dir"

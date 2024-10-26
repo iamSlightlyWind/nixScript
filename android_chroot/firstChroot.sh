@@ -14,7 +14,7 @@ rm /etc/pacman.d/mirrorlist
 mv mirrorlist /etc/pacman.d/mirrorlist
 
 pacman -Syu --noconfirm
-pacman -S net-tools sudo nano curl wget git base-devel i3 neofetch --noconfirm
+pacman -S net-tools sudo nano curl mesa mesautils firefox konsole wget git base-devel i3 fish neofetch --noconfirm
 
 groupadd storage
 groupadd wheel

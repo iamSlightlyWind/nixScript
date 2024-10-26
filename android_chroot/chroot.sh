@@ -1,5 +1,7 @@
 #!/bin/bash
-sh ./kill.sh
+TEMP="/data/local/tmp"
+
+sh $TEMP/kill.sh
 
 echo ">>> Chrooting"
 

@@ -10,13 +10,12 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-if [ ! -f "$FILE" ]; then
-    wget http://os.archlinuxarm.org/os/$FILE
-else
-    echo "$FILE already exists."
-fi
-
 if [ ! -d "$CHROOTSOURCE" ]; then
+    if [ ! -f "$FILE" ]; then
+        wget http://os.archlinuxarm.org/os/$FILE
+    else
+        echo "$FILE already exists."
+    fi
     mkdir -p "$CHROOTSOURCE"
     tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner -C "$CHROOTSOURCE"
 else

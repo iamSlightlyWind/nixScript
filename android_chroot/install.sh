@@ -31,8 +31,6 @@ if [ -d "$CHROOTDIR" ]; then
     rm -rf $CHROOTDIR.bak &
     mkdir -p $CHROOTDIR
     tar -cf - $CHROOTSOURCE | tar -xf - -C $CHROOTDIR
-    ls -la $CHROOTDIR/chrootarch.source
-    ls -la $CHROOTDIR
     mv $CHROOTDIR/$CHROOTSOURCE/* $CHROOTDIR
     rm -rf $CHROOTDIR/$CHROOTSOURCE
 fi
@@ -54,5 +52,7 @@ sed -i 's/^CheckSpace/#CheckSpace/' $CHROOTDIR/etc/pacman.conf
 sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 16/' $CHROOTDIR/etc/pacman.conf
 rm $CHROOTDIR/etc/pacman.d/mirrorlist
 mv $TERMUXHOME/mirrorlist $CHROOTDIR/etc/pacman.d/mirrorlist
+
+mv $TERMUXHOME/firstChroot.sh $CHROOTDIR
 
 sh $TERMUXHOME/chroot.sh 

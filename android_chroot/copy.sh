@@ -18,4 +18,5 @@ sudo cp -fp kill.sh $TERMUXHOME
 sudo cp -fp both.sh $TERMUXHOME
 sudo cp -fp install.sh $TERMUXHOME
 sudo cp -fp "fetch&run.sh" $TERMUXHOME
+sudo cp -fp firstChroot.sh $TERMUXHOME
 mv mirrorlist $TERMUXHOME

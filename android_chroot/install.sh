@@ -21,13 +21,14 @@ fi
 
 mkdir -p "$CHROOTDIR"
 cd "$CHROOTDIR"
+echo "Current directory: $(pwd)"
 
 tar xvf /data/data/com.termux/files/home/$FILE --numeric-owner
 
-mkdir media
-mkdir media/sdcard
-mkdir dev/shm
-mkdir -p etc
+mkdir $CHROOTDIR/dev
+mkdir $CHROOTDIR/media/sdcard
+mkdir $CHROOTDIR/dev/shm
+mkdir -p $CHROOTDIR/etc
 
 echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" > $CHROOTDIR/etc/resolv.conf
 echo "127.0.0.1 localhost" > $CHROOTDIR/etc/hosts

@@ -10,6 +10,8 @@ groupadd -g 3004 aid_net_raw
 groupadd -g 1003 aid_graphics
 usermod -G 3003 -a root
 
+mv mirrorlist /etc/pacman.d/mirrorlist
+
 pacman -Syu --noconfirm
 pacman -S net-tools sudo nano curl wget git base-devel i3 neofetch --noconfirm
 

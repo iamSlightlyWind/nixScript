@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_DIR="./nixScript"
+REPO_DIR="./nixscript"
 CHECK_INTERVAL=5
 
 while true; do

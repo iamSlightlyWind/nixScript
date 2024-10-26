@@ -38,7 +38,7 @@ if mountpoint -q $mnt/dev/shm; then
   umount -l $mnt/dev/shm || true
 fi
 
-echo "[I] Unmounting 7/8: /tmp"
+echo "[I] Unmounting 8/8: /tmp"
 if mountpoint -q $mnt/tmp; then
   umount -l $mnt/tmp || true
 fi

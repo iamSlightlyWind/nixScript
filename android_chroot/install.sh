@@ -33,8 +33,8 @@ if [ -d "$CHROOTDIR" ]; then
     tar -cf - $CHROOTSOURCE | tar -xf - -C $CHROOTDIR
     ls -la $CHROOTDIR/chrootarch.source
     ls -la $CHROOTDIR
-    mv $CHROOTDIR/chrootarch.source/* $CHROOTDIR
-    rm -rf $CHROOTDIR/chrootarch.source
+    mv $CHROOTDIR/$CHROOTSOURCE/* $CHROOTDIR
+    rm -rf $CHROOTDIR/$CHROOTSOURCE
 fi
 
 cd $TEMP
@@ -49,5 +49,8 @@ echo "127.0.0.1 localhost" > $CHROOTDIR/hosts
 
 mv $CHROOTDIR/resolv.conf $CHROOTDIR/etc/resolv.conf
 mv $CHROOTDIR/hosts $CHROOTDIR/etc/hosts
+
+sed -i 's/^CheckSpace/#CheckSpace/' $CHROOTDIR/etc/pacman.conf
+sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 16/' $CHROOTDIR/etc/pacman.conf
 
 sh $TERMUXHOME/chroot.sh 

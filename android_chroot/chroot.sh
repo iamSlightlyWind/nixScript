@@ -1,7 +1,7 @@
 #!/bin/bash
-TEMP="/data/local/tmp"
+TERMUXHOME="/data/data/com.termux/files/home"
 
-sh $TEMP/kill.sh
+sh $TERMUXHOME/kill.sh
 
 echo ">>> Chrooting"
 

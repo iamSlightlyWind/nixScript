@@ -11,7 +11,9 @@ fi
 
 cd $TEMP
 
-rm -rf $CHROOTDIR
+mv $CHROOTDIR $CHROOTDIR.old
+rm -rf $CHROOTDIR.old &
+
 mkdir -p $CHROOTDIR
 tar -cf - $BACKUPDIR | tar -xf - -C $CHROOTDIR
 mv $CHROOTDIR/$BACKUPDIR/* $CHROOTDIR

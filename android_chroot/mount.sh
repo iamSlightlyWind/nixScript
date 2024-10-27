@@ -4,9 +4,6 @@ echo ">>> Mounting chroot directories"
 mnt="/data/local/tmp/chrootarch"
 busybox mount -o remount,dev,suid /data
 
-rm -rf $mnt/dev/shm
-mkdir $mnt/dev/shm
-
 echo "[I] Mounting 1/7: /dev"
 if ! mountpoint -q $mnt/dev; then
   mount -o bind /dev $mnt/dev/
@@ -38,6 +35,7 @@ if ! mountpoint -q $mnt/var/cache; then
 fi
 
 echo "[I] Mounting 7/7: /dev/shm"
-if ! mountpoint -q $mnt/dev/shm; then
-  busybox mount -t tmpfs -o size=256M tmpfs $mnt/dev/shm
-fi
+rm -rf /data/local/tmp/chrootarch/dev/shm
+mkdir /data/local/tmp/chrootarch/dev/shm
+chmod 777 /data/local/tmp/chrootarch/dev/shm
+busybox mount -t tmpfs -o size=256M tmpfs $mnt/dev/shm

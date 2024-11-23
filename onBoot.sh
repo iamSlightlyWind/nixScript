@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo ryzenadj -f 75
+watch -n30 sudo ryzenadj -f 75

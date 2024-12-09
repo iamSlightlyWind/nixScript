@@ -8,7 +8,7 @@
 
 - Contains the script to build and run all tests for C++ excercism exercises.
 
-## runneling
+## tunneling
 
 - Contains the script to setup a cloudflare tunnel, including dependencies and configuration.
 

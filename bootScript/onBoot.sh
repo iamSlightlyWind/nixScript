@@ -1,6 +1,6 @@
 #!/bin/bash
 while true; do
-    sudo /usr/bin/ryzenadj -f 75
-    sleep 30
+    sudo /usr/bin/ryzenadj -f $(cat /home/slightlywind/Repositories/nixScript/bootScript/temp)
+    sleep 5
 done
 

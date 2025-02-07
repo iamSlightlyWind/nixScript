@@ -1,0 +1,12 @@
+[Unit]
+Description=Run nixScript on boot
+After=network.target
+
+[Service]
+ExecStart=/home/slightlywind/Repositories/nixScript//onBoot.sh
+Restart=always
+User=slightlywind
+
+[Install]
+WantedBy=multi-user.target
+

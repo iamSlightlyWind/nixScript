@@ -3,7 +3,7 @@ Description=Run nixScript on boot
 After=network.target
 
 [Service]
-ExecStart=/home/slightlywind/Repositories/nixScript//onBoot.sh
+ExecStart=/home/slightlywind/Repositories/nixScript/khoj/khoj.sh
 Restart=always
 User=slightlywind
 

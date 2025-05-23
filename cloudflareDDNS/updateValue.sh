@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 source "./values"
 CURRENT_IP=$(curl -s https://ipinfo.io/ip)
